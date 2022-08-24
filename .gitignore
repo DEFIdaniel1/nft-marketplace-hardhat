@@ -1,0 +1,16 @@
+node_modules
+.env
+.prettierrc
+.DS_Store
+coverage
+coverage.json
+typechain
+typechain-types
+deployments
+gas-report.txt
+.solhint.json
+
+#Hardhat files
+cache
+artifacts
+
