@@ -1,0 +1,25 @@
+const { network } = require('hardhat')
+const { networkConfig } = require('../helper-hardhat-config')
+const { verify } = require('../utils/verify')
+
+module.exports = async function ({ deployments, getNamedAccounts }) {
+    const { deployer } = await getNamedAccounts()
+    const { deploy, log } = deployments
+    const chainId = network.config.chainId
+    const args = []
+
+    log('-------------Deploying NFT Marketplace-----------')
+
+    const nftMarketplace = await deploy('NFTMarketplace', {
+        from: deployer,
+        args: args,
+        log: true,
+        waitConfirmations: networkConfig[chainId].waitConfirmations,
+    })
+    log('------------------deployed---------------------')
+
+    if (chainId != 31337) {
+        log('Verify initiated')
+        verify(nftMarketplace.address, args)
+    }
+}
