@@ -8,9 +8,9 @@ module.exports = async function ({ deployments, getNamedAccounts }) {
     const chainId = network.config.chainId
     const args = []
 
-    log('-------------Deploying NFT Marketplace-----------')
+    log('-------------Deploying Basic NFT-----------')
 
-    const nftMarketplace = await deploy('NFTMarketplace', {
+    const nftMarketplace = await deploy('BasicNft', {
         from: deployer,
         args: args,
         log: true,
@@ -23,4 +23,4 @@ module.exports = async function ({ deployments, getNamedAccounts }) {
         verify(nftMarketplace.address, args)
     }
 }
-module.exports.tags = ['all', 'marketplace']
+module.exports.tags = ['all', 'basic']
